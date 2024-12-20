@@ -22,6 +22,9 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use AbanoubNassem\FilamentGRecaptchaField\Forms\Components\GRecaptcha;
 use AbanoubNassem\FilamentGRecaptchaField\FilamentGRecaptchaFieldPlugin;
+use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
+use App\Filament\Pages\Backups;
+
 
 
 class AdminPanelProvider extends PanelProvider
@@ -43,6 +46,13 @@ class AdminPanelProvider extends PanelProvider
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
             ->pages([
                 Pages\Dashboard::class,
+            ])
+            ->plugins([
+                FilamentSpatieLaravelBackupPlugin::make()
+                    ->usingPage(Backups::class)
+                // ->usingQueue('my-queue')
+                // ->usingPolingInterval('10s') // default value is 4s
+                // ->statusListRecordsTable(false) // default value is true
             ])
             ->userMenuItems([
                 MenuItem::make()
