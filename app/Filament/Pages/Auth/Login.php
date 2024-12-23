@@ -6,6 +6,7 @@ use Filament\Forms\Form;
 use Filament\Pages\Auth\Login as AuthLogin;
 use Filament\Forms\Components\TextInput;
 use AbanoubNassem\FilamentGRecaptchaField\Forms\Components\GRecaptcha;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\HtmlString;
 
 class Login extends AuthLogin
