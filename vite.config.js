@@ -1,23 +1,27 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import laravel from 'laravel-vite-plugin'; // Pastikan ini diimpor
+import laravel from 'laravel-vite-plugin';
 import tailwindcss from 'tailwindcss';
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/js/app.js', 'resources/css/filament/admin/theme.css'], // File entry utama Laravel
-            refresh: true, // Refresh otomatis saat file berubah
+            input: [
+                'resources/js/app.js',
+                'resources/css/app.css',
+                'resources/css/filament/admin/theme.css'
+            ],
+            refresh: true,
         }),
-        vue(), // Plugin Vue.js
+        vue(),
     ],
     build: {
-        manifest: true, // Aktifkan manifest untuk Laravel
-        outDir: 'public/build', // Direktori keluaran untuk build
+        manifest: true,
+        outDir: 'public/build',
     },
     css: {
         postcss: {
-            plugins: [tailwindcss()], // Aktifkan TailwindCSS
+            plugins: [tailwindcss()],
         },
     },
 });
